@@ -63,7 +63,7 @@ task.h is included from an application file. */
 	extern uint8_t ucHeap[ configTOTAL_HEAP_SIZE ];
 #else
 #if (defined(__GNUC__))
-__attribute__((section(".bss.$BOARD_SDRAM*"))) 	alignas(256) static uint8_t ucHeap[ configTOTAL_HEAP_SIZE ];
+alignas(256) static uint8_t ucHeap[ configTOTAL_HEAP_SIZE ];
 #else
 static volatile uint8_t ucHeap[ configTOTAL_HEAP_SIZE ];
 #endif
