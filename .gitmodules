@@ -1,0 +1,3 @@
+[submodule "mimiclib"]
+	path = mimiclib
+	url = https://github.com/tkashi-github/mimiclib
