@@ -1,0 +1,12 @@
+.metadata
+FreeRTOS_TAD_logs
+CMSIS_DSP/Debug
+BOOT/Debug
+APL/Debug
+CMSIS_DSP/.vscode/ipch
+BOOT/.vscode/ipch
+APL/.vscode/ipch
+.mcuxpressoide_packages_support
+BOOT/.settings/language.settings.xml
+BOOT/.settings/org.eclipse.cdt.codan.core.prefs
+BOOT/.settings/org.eclipse.cdt.managedbuilder.core.prefs
