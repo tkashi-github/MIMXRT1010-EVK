@@ -52,7 +52,14 @@
 			"DEBUG",
 			"__NEWLIB__",
 			"ENABLE_RAM_VECTOR_TABLE",
+			"ARM_MATH_CM7",
+			"__VFP_FP__",
+			"__ARM_ARCH_7M__=1",
 		],
 		"editor.autoClosingBrackets": "never",
+		"files.associations": {
+			"fsl_device_registers.h": "c",
+			"mimxrt1011.h": "c"
+		},
 	}
 }

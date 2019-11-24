@@ -64,7 +64,7 @@ ALLOCATE_IN_DTCM alignas(32) static StaticTask_t s_InitialTaskTCB;
 ALLOCATE_IN_DTCM alignas(32) static StaticTask_t s_ConsoleTaskTCB;
 
 /** Task Stack (STATIC ALLOCATION)*/
-ALLOCATE_IN_DTCM alignas(32) static uint32_t s_InitialTaskStack[8192/sizeof(uint32_t)];
+ALLOCATE_IN_DTCM alignas(32) static uint32_t s_InitialTaskStack[2048/sizeof(uint32_t)];
 ALLOCATE_IN_DTCM alignas(32) static uint32_t s_ConsoleTaskStack[8192/sizeof(uint32_t)];
 
 /** Task Table */

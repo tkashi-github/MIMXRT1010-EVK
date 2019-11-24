@@ -22,9 +22,9 @@ typedef struct _mem_align_control_block
 #endif
 
 #if defined(__GNUC__)
- 	/** Modified */
-    extern void (* const g_pfnVectors[])(void);
-    static uint32_t s_RamVectorTable[0x400u / sizeof(uint32_t)] __attribute__((section(".bss.$VECTOR_TABLE"))) ;
+/** Modified */
+extern void (* const g_pfnVectors[])(void);
+static uint32_t s_RamVectorTable[0x400u / sizeof(uint32_t)] __attribute__((section(".bss.$VECTOR_TABLE"))) ;
 #else
     #error
 #endif
