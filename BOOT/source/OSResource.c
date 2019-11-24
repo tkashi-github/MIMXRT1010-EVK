@@ -144,7 +144,6 @@ DefALLOCATE_BSS_DTCM alignas(4) osSemaphoreId_t g_bsIdLPUARTTxSemaphore[1+enLPUA
 
 DefALLOCATE_BSS_DTCM alignas(32) static StaticSemaphore_t s_xLPUARTRxSemaphoreBuffer[1+enLPUART_MAX];
 DefALLOCATE_BSS_DTCM alignas(32) static StaticSemaphore_t s_xLPUARTTxSemaphoreBuffer[1+enLPUART_MAX];
-DefALLOCATE_BSS_DTCM alignas(32) static StaticSemaphore_t s_xStorageTaskMsgBuffer;
 
 
 const static stBinarySemaphoreTable_t s_stBinarySemaphoreTable[] = {
@@ -154,7 +153,7 @@ const static stBinarySemaphoreTable_t s_stBinarySemaphoreTable[] = {
 	{&g_bsIdLPUARTTxSemaphore[enLPUART1], {"BS_LPUART1TX", 0, &s_xLPUARTTxSemaphoreBuffer[enLPUART1], sizeof(StaticSemaphore_t)}, 1, 1},
 	{&g_bsIdLPUARTTxSemaphore[enLPUART2], {"BS_LPUART2TX", 0, &s_xLPUARTTxSemaphoreBuffer[enLPUART2], sizeof(StaticSemaphore_t)}, 1, 1},
 
-	{NULL, NULL},
+	{0},
 };
 
 void CreateBinarySemaphore(void){	/** CMSIS RTOS2にすること */

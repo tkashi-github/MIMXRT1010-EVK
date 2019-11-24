@@ -18,6 +18,8 @@
 /*! @brief The board name */
 #define BOARD_NAME "MIMXRT1010-EVK"
 
+extern uint32_t BOARD_DebugConsoleSrcFreq(void);
+
 /* The UART to use for debug messages. */
 #define BOARD_DEBUG_UART_TYPE kSerialPort_Uart
 #define BOARD_DEBUG_UART_BASEADDR (uint32_t) LPUART1
