@@ -1,0 +1,10 @@
+<info flash_driver='LPC11_12_13_32K_8K.cfx'>
+ <chip>
+  <memory id='Flash' type='Flash' is_ro='true' can_program='true'></memory>
+  <memory id='RAM' type='RAM'></memory>
+   <memoryInstance id='BOARD_FLASH' derived_from='Flash' location='0x60000000' size='0x1000000' driver='MIMXRT1010_SFDP_QSPI.cfx'  edited='true'  />
+   <memoryInstance id='SRAM_DTC' derived_from='RAM' location='0x20000400' size='0x17c00'   edited='true'  />
+   <memoryInstance id='NCACHE_REGION' derived_from='RAM' location='0x20218000' size='0x8000'   edited='true'  />
+   <memoryInstance id='VECTOR_TABLE' derived_from='RAM' location='0x20000000' size='0x400'   edited='true'  />
+ </chip>
+</info>
