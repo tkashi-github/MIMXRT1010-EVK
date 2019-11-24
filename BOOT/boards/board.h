@@ -111,9 +111,6 @@ extern "C" {
 /*******************************************************************************
  * API
  ******************************************************************************/
-uint32_t BOARD_DebugConsoleSrcFreq(void);
-
-void BOARD_InitDebugConsole(void);
 void BOARD_ConfigMPU(void);
 #if defined(SDK_I2C_BASED_COMPONENT_USED) && SDK_I2C_BASED_COMPONENT_USED
 void BOARD_InitDebugConsole(void);

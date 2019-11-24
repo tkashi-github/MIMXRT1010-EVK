@@ -40,7 +40,6 @@
 #include "UserTypedef.h"
 
 #include "OSResource.h"
-#include "common/update.h"
 
 /**  */
 extern _Bool g_bInitEnd;
@@ -53,8 +52,6 @@ extern _Bool g_bInitEnd;
 void InitialTask(void const *argument)
 {
 		g_bInitEnd = true;
-		CheckROM();
-		//CheckBinFile("IMXRT1050-EVKB_APL_crc16.bin");
 		osThreadSuspend(osThreadGetId());
 }
 

@@ -15,6 +15,7 @@
 #include "UserTypedef.h"
 #include "OSResource.h"
 
+#include "fsl_common.h"
 #include "UART/DrvLPUART.h"
 
 /*******************************************************************************
@@ -53,17 +54,9 @@ int main(void)
 
 	SysTick_Config(SystemCoreClock / 1000u);
 	InstallIRQHandler(SysTick_IRQn, (uint32_t)CMSIS_OS2_SysTick_Handler);
-	//EnableIRQ(SysTick_IRQn);
-	//NVIC_SetPriority(SVCall_IRQn, configLIBRARY_MAX_SYSCALL_INTERRUPT_PRIORITY);
 	InstallIRQHandler(SVCall_IRQn, (uint32_t)vPortSVCHandler);
-	//EnableIRQ(SVCall_IRQn);
-	//NVIC_SetPriority(PendSV_IRQn, configLIBRARY_MAX_SYSCALL_INTERRUPT_PRIORITY + 1);
 	InstallIRQHandler(PendSV_IRQn, (uint32_t)xPortPendSVHandler);
-	//EnableIRQ(PendSV_IRQn);
 
-	BOARD_InitBootPeripherals();
-
-	
 	while(osOK != osKernelInitialize());
 
 	CreateTask();
@@ -121,7 +114,6 @@ void vApplicationTickHook(void)
 		}else{
 			cnt++;
 		}
-		GPIOMonitor();
 	}else{
 		g_u32CurrentRun = 0u;
 	}

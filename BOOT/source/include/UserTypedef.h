@@ -74,13 +74,7 @@ typedef enum{
 	enLPUART_MIN = 1,
 	enLPUART1=1,
 	enLPUART2,
-	enLPUART3,
-	enLPUART4,
-	enLPUART5,
-	enLPUART6,
-	enLPUART7,
-	enLPUART8,
-	enLPUART_MAX = enLPUART8,
+	enLPUART_MAX = enLPUART2,
 }enLPUART_t;
 
 /** Task Message */

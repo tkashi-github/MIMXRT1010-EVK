@@ -4,5 +4,55 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"editor.insertSpaces": false,
+		"editor.tabSize": 4,
+		"files.encoding": "utf8",
+		"c-cpp-flylint.clang.standard": [
+			"c11"
+		],
+		"clang.cxxflags": [
+			"--std=c++11"
+		],
+		"clang.cflags": [
+			"--std=c11"
+		],
+		"C_Cpp.default.includePath": [
+			"${workspaceFolder}/",
+			"${workspaceFolder}/source",
+			"${workspaceFolder}/source/include",
+			"${workspaceFolder}/source/common",
+			"${workspaceFolder}/source/Task",
+			"${workspaceFolder}/source/UserDriver",
+			"${workspaceFolder}/board",
+			"${workspaceFolder}/CMSIS",
+			"${workspaceFolder}/CMSIS-RTOS2",
+			"${workspaceFolder}/devices",
+			"${workspaceFolder}/drivers",
+			"${workspaceFolder}/startup",
+			"${workspaceFolder}/amazon-freertos/include",
+			"${workspaceFolder}/xip",
+			"${workspaceFolder}/../mimiclib/source",
+		],
+
+		"C_Cpp.default.defines": [
+			"__GNUC__",
+			"CPU_MIMXRT1011DAE5A",
+			"CPU_MIMXRT1011DAE5A_cm7",
+			"SDK_DEBUGCONSOLE=1",
+			"XIP_EXTERNAL_FLASH=1",
+			"XIP_BOOT_HEADER_ENABLE=1",
+			"PRINTF_FLOAT_ENABLE=0",
+			"SCANF_FLOAT_ENABLE=0",
+			"PRINTF_ADVANCED_ENABLE=0",
+			"SCANF_ADVANCED_ENABLE=0",
+			"CR_INTEGER_PRINTF",
+			"__MCUXPRESSO",
+			"__USE_CMSIS",
+			"DEBUG",
+			"__NEWLIB__",
+			"ENABLE_RAM_VECTOR_TABLE",
+		],
+		"editor.autoClosingBrackets": "never",
+	}
 }

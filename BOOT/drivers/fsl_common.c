@@ -21,48 +21,37 @@ typedef struct _mem_align_control_block
 #define FSL_COMPONENT_ID "platform.drivers.common"
 #endif
 
+#if defined(__GNUC__)
+ 	/** Modified */
+    extern void (* const g_pfnVectors[])(void);
+    static uint32_t s_RamVectorTable[0x400u / sizeof(uint32_t)] __attribute__((section(".bss.$VECTOR_TABLE"))) ;
+#else
+    #error
+#endif
+
 #ifndef __GIC_PRIO_BITS
 #if defined(ENABLE_RAM_VECTOR_TABLE)
 uint32_t InstallIRQHandler(IRQn_Type irq, uint32_t irqHandler)
 {
-/* Addresses for VECTOR_TABLE and VECTOR_RAM come from the linker file */
-#if defined(__CC_ARM) || defined(__ARMCC_VERSION)
-    extern uint32_t Image$$VECTOR_ROM$$Base[];
-    extern uint32_t Image$$VECTOR_RAM$$Base[];
-    extern uint32_t Image$$RW_m_data$$Base[];
-
-#define __VECTOR_TABLE Image$$VECTOR_ROM$$Base
-#define __VECTOR_RAM Image$$VECTOR_RAM$$Base
-#define __RAM_VECTOR_TABLE_SIZE (((uint32_t)Image$$RW_m_data$$Base - (uint32_t)Image$$VECTOR_RAM$$Base))
-#elif defined(__ICCARM__)
-    extern uint32_t __RAM_VECTOR_TABLE_SIZE[];
-    extern uint32_t __VECTOR_TABLE[];
-    extern uint32_t __VECTOR_RAM[];
-#elif defined(__GNUC__)
-    extern uint32_t __VECTOR_TABLE[];
-    extern uint32_t __VECTOR_RAM[];
-    extern uint32_t __RAM_VECTOR_TABLE_SIZE_BYTES[];
-    uint32_t __RAM_VECTOR_TABLE_SIZE = (uint32_t)(__RAM_VECTOR_TABLE_SIZE_BYTES);
-#endif /* defined(__CC_ARM) || defined(__ARMCC_VERSION) */
     uint32_t n;
     uint32_t ret;
     uint32_t irqMaskValue;
 
     irqMaskValue = DisableGlobalIRQ();
-    if (SCB->VTOR != (uint32_t)__VECTOR_RAM)
+    if (SCB->VTOR != (uint32_t)s_RamVectorTable)
     {
         /* Copy the vector table from ROM to RAM */
-        for (n = 0; n < ((uint32_t)__RAM_VECTOR_TABLE_SIZE) / sizeof(uint32_t); n++)
+        for (n = 0; n < (sizeof(s_RamVectorTable) / sizeof(uint32_t)); n++)
         {
-            __VECTOR_RAM[n] = __VECTOR_TABLE[n];
+            s_RamVectorTable[n] = (uint32_t)g_pfnVectors[n];
         }
         /* Point the VTOR to the position of vector table */
-        SCB->VTOR = (uint32_t)__VECTOR_RAM;
+        SCB->VTOR = (uint32_t)s_RamVectorTable;
     }
 
-    ret = __VECTOR_RAM[irq + 16];
+    ret = s_RamVectorTable[irq + 16];
     /* make sure the __VECTOR_RAM is noncachable */
-    __VECTOR_RAM[irq + 16] = irqHandler;
+    s_RamVectorTable[irq + 16] = irqHandler;
 
     EnableGlobalIRQ(irqMaskValue);
 
@@ -71,7 +60,6 @@ uint32_t InstallIRQHandler(IRQn_Type irq, uint32_t irqHandler)
 #if defined __CORTEX_M && (__CORTEX_M == 4U)
     __DSB();
 #endif
-
     return ret;
 }
 #endif /* ENABLE_RAM_VECTOR_TABLE. */
