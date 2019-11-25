@@ -58,6 +58,8 @@ void ConsoleTask(void const *argument){
 	/** Welcome Message */
 	mimic_printf("\r\n\r\nVersion = %s\r\n", g_szProgramVersion);
 	mimic_printf("\r\n\r\nCompiler Version\r\n");
+	mimic_printf("\r\nSCB->CPACR == 0x%08lX\r\n", SCB->CPACR);
+	mimic_printf("\r\n__get_FPSCR == 0x%08lX\r\n", __get_FPSCR());
 #ifdef __GNUC__
 	mimic_printf("GCC %s\r\n\r\n", __VERSION__);
 #else

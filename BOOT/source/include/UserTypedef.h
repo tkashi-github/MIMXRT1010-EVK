@@ -45,6 +45,9 @@ extern "C"
 #include <stdbool.h>
 #include <stdalign.h>
 
+#include "fsl_device_registers.h"
+
+
 /* CMSIS */
 #include "cmsis_os.h"
 #include "cmsis_os2.h"
@@ -58,7 +61,7 @@ extern "C"
 #include "stream_buffer.h"
 
 /*  */
-#include "fsl_device_registers.h"
+
 
 /** version.h */
 #include "version.h"
